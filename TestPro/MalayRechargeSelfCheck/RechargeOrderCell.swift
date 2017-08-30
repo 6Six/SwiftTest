@@ -14,10 +14,10 @@ class RechargeOrderCell: UITableViewCell {
 //    @IBOutlet weak var userImageView: DesignableImageView!
     
     @IBOutlet weak var telImageView: UIImageView!
-    @IBOutlet weak var phoneLale: UILabel!
+    @IBOutlet weak var phoneLable: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var celNameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
     @IBOutlet weak var searchButton: UIButton!
@@ -40,5 +40,12 @@ class RechargeOrderCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func setContent(dic: Dictionary<String, String>) {
+        telImageView.image = UIImage.init(named: dic["telImage"]!)
+        phoneLable.text = dic["phone"]
+        timeLabel.text = dic["time"]
+        celNameLabel.text = dic["celName"]
+        priceLabel.text = dic["price"]
+    }
     
 }

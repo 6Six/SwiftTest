@@ -73,13 +73,13 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="phoneLale" destination="3nF-6t-bhD" id="hhT-6o-KBY"/>
+                <outlet property="celNameLabel" destination="miv-7K-x0f" id="2xj-Ac-ghU"/>
+                <outlet property="phoneLable" destination="3nF-6t-bhD" id="GuN-Nj-KdD"/>
                 <outlet property="priceLabel" destination="Eb5-8P-Hu9" id="SIg-To-gxV"/>
                 <outlet property="resultLabel" destination="akz-mK-Ze1" id="Kii-5P-SFc"/>
                 <outlet property="searchButton" destination="f1H-lw-FRb" id="uj3-9t-W2c"/>
                 <outlet property="telImageView" destination="f3D-iQ-13O" id="PzD-sx-S96"/>
                 <outlet property="timeLabel" destination="iJf-nz-rcp" id="IFU-cR-RTR"/>
-                <outlet property="typeLabel" destination="miv-7K-x0f" id="YmG-fO-fr7"/>
             </connections>
             <point key="canvasLocation" x="35.5" y="54"/>
         </tableViewCell>

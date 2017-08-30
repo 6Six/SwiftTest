@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B93494E1F5699FE0054BA65 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93494D1F5699FE0054BA65 /* TestCell.swift */; };
+		4B9349501F569A080054BA65 /* TestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B93494F1F569A080054BA65 /* TestCell.xib */; };
 		4BD30D841F50093500669237 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD30D831F50093500669237 /* AppDelegate.swift */; };
 		4BD30D861F50093500669237 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD30D851F50093500669237 /* ViewController.swift */; };
 		4BD30D891F50093500669237 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BD30D871F50093500669237 /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		332AB5B6D4273D2C20EF0519 /* Pods_MalayRechargeSelfCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MalayRechargeSelfCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B93494D1F5699FE0054BA65 /* TestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
+		4B93494F1F569A080054BA65 /* TestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCell.xib; sourceTree = "<group>"; };
 		4BD30D801F50093500669237 /* SelfAdaptionWidth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SelfAdaptionWidth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BD30D831F50093500669237 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BD30D851F50093500669237 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 				4BDB7DFF1F55924600893C8F /* ViewController.swift */,
 				4BDB7E0D1F55946E00893C8F /* RechargeOrderCell.swift */,
 				4BDB7E4D1F55C37300893C8F /* RechargeOrderCell.xib */,
+				4B93494D1F5699FE0054BA65 /* TestCell.swift */,
+				4B93494F1F569A080054BA65 /* TestCell.xib */,
 				4BDB7E041F55924600893C8F /* Assets.xcassets */,
 				4BDB7E091F55924600893C8F /* Info.plist */,
 			);
@@ -227,6 +233,7 @@
 				4BDB7E4C1F55C2B800893C8F /* Main.storyboard in Resources */,
 				4BDB7E051F55924600893C8F /* Assets.xcassets in Resources */,
 				4BDB7E4B1F55C2B800893C8F /* LaunchScreen.storyboard in Resources */,
+				4B9349501F569A080054BA65 /* TestCell.xib in Resources */,
 				4BDB7E4E1F55C37300893C8F /* RechargeOrderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,6 +253,7 @@
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -255,6 +263,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BDB7E001F55924600893C8F /* ViewController.swift in Sources */,
+				4B93494E1F5699FE0054BA65 /* TestCell.swift in Sources */,
 				4BDB7E0E1F55946E00893C8F /* RechargeOrderCell.swift in Sources */,
 				4BDB7DFE1F55924600893C8F /* AppDelegate.swift in Sources */,
 			);
@@ -514,6 +524,7 @@
 				4BDB7E0B1F55924600893C8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
