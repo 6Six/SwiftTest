@@ -1,10 +1,33 @@
 PODS:
   - Alamofire (4.5.0)
+  - AlamofireObjectMapper (4.1.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 2.0)
+  - AlamofireSwiftyJSON (1.0.0):
+    - Alamofire (~> 4.0)
+    - SwiftyJSON (~> 3.0)
+  - Moya (8.0.5):
+    - Moya/Core (= 8.0.5)
+  - Moya-ObjectMapper/Core (2.3.2):
+    - Moya (~> 8.0)
+    - ObjectMapper (~> 2.2)
+  - Moya-ObjectMapper/RxSwift (2.3.2):
+    - Moya-ObjectMapper/Core
+    - Moya/RxSwift
+    - RxSwift (~> 3.1)
+  - Moya/Core (8.0.5):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (8.0.5):
+    - Moya/Core
+    - RxSwift (~> 3.0)
   - NSObject+Rx (2.3.0):
     - RxSwift (~> 3.0)
+  - ObjectMapper (2.2.8)
   - R.swift (3.1.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
+  - Result (3.2.3)
   - RxCocoa (3.6.1):
     - RxSwift (~> 3.6)
   - RxSwift (3.6.1)
@@ -13,22 +36,42 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AlamofireObjectMapper (~> 4.0)
+  - AlamofireSwiftyJSON (from `https://github.com/Xinguang/AlamofireSwiftyJSON.git`)
+  - Moya
+  - Moya-ObjectMapper/RxSwift
+  - Moya/RxSwift
   - NSObject+Rx
   - R.swift (~> 3.1.0)
   - RxCocoa
+  - RxSwift
   - SnapKit
-  - SwiftyJSON
+
+EXTERNAL SOURCES:
+  AlamofireSwiftyJSON:
+    :git: https://github.com/Xinguang/AlamofireSwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  AlamofireSwiftyJSON:
+    :commit: 1ec31511ed6f54f4c8c7166c35045f05f9dd078a
+    :git: https://github.com/Xinguang/AlamofireSwiftyJSON.git
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
+  AlamofireSwiftyJSON: addf317c83b4497ef44431ccc9c16f5bfc411f14
+  Moya: c37eec09a098ba9991b5a963b291fc5704bdb9ef
+  Moya-ObjectMapper: 1b05f10bb69fb6c8750d497d2974c1c63c08c3a9
   NSObject+Rx: 38170f84b948152c05c57260cb853e387a5519d1
+  ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: d6b7a0b2c32972631075380d51da14a541869415
+PODFILE CHECKSUM: f3a1e8a384f97578ca6b856a084a511c0e1b6f9c
 
 COCOAPODS: 1.3.1

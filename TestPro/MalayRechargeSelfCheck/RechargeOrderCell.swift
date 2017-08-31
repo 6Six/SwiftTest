@@ -40,12 +40,12 @@ class RechargeOrderCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    public func setContent(dic: Dictionary<String, String>) {
-        telImageView.image = UIImage.init(named: dic["telImage"]!)
-        phoneLable.text = dic["phone"]
-        timeLabel.text = dic["time"]
-        celNameLabel.text = dic["celName"]
-        priceLabel.text = dic["price"]
+    public func setContent(orderDetail: OrderDetail) {
+        telImageView.image = UIImage.init(named: orderDetail.telcom_image_name!)
+        phoneLable.text = orderDetail.phone_num
+        timeLabel.text = orderDetail.recharge_time
+        celNameLabel.text = orderDetail.telcom_name
+        priceLabel.text = "$" + orderDetail.recharge_money!
     }
     
 }

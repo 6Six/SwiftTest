@@ -6,22 +6,27 @@ inhibit_all_warnings!
 
 def swift_pods
     pod 'Alamofire'
+#    pod 'AlamofireSwiftyJSON'
+
+    pod 'AlamofireSwiftyJSON', :git =>'https://github.com/Xinguang/AlamofireSwiftyJSON.git'
+
     pod 'SnapKit'
-#    pod 'RxSwift'
+    pod 'RxSwift'
     pod 'RxCocoa'
 #    pod 'ObjectMapper'
+    pod 'AlamofireObjectMapper', '~> 4.0'
     pod 'NSObject+Rx'
     pod 'R.swift', '~> 3.1.0'
 #    pod 'TransitionTreasury', '~> 3.0.4'
-#    pod 'Moya'
-#    pod 'Moya/RxSwift'
-#    pod 'Moya-ObjectMapper/RxSwift'
+    pod 'Moya'
+    pod 'Moya/RxSwift'
+    pod 'Moya-ObjectMapper/RxSwift'
 #    五角星
 #    https://github.com/evgenyneu/Cosmos
 #    pod 'Cosmos', '~> 10.0'
 #    https://github.com/WenchaoD/FSPagerView
 #    pod 'FSPagerView'
-    pod 'SwiftyJSON'
+#    pod 'SwiftyJSON'
 #    pod 'KMPlaceholderTextView'
 #    pod 'TTTAttributedLabel'
     
