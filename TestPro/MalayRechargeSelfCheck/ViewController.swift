@@ -151,32 +151,41 @@ class ViewController: UIViewController {
         }
     }
     
-    func queryOrder(date: NSDate) {
-        
+    func queryRechargeResult(orderId: String) {
+        JustHUD.shared.showInView(view: self.view, withHeader: nil, andFooter: "查询中，请稍候..")
+
+        let queryUrl = "https://www.ygsjsy.com/dmsh/JSPay/checkTransactionStatus.php?sClientTxId=" + orderId
+        Alamofire.request(queryUrl).responseObject { (response: DataResponse<RechargeResultResponse>) in
+            if JustHUD.shared.isActive {
+                JustHUD.shared.hide()
+            }
+            
+            
+        }
     }
     
-//    func timeStampToString(timeStamp:String) -> String {
-//        var string = NSString(string: timeStamp)
-//        
-//        // test code
-//        
-//        let date = Date()
-//        let dateStamp:TimeInterval = date.timeIntervalSince1970
-//        
-//        let dateSt:Int = Int(dateStamp)
-//        print(dateSt)
-//        string = String(dateSt) as NSString
-//        
-//        //
-//        
-//        
-//        let timeStamp : TimeInterval = string.doubleValue
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy.MM.dd hh:mm:ss"
-//        
-//        let newDate = Date(timeIntervalSince1970: timeStamp)
-//        return dateFormatter.string(from: newDate)
-//    }
+    func timeStampToString(timeStamp:String) -> String {
+        var string = NSString(string: timeStamp)
+        
+        // test code
+        
+        let date = Date()
+        let dateStamp:TimeInterval = date.timeIntervalSince1970
+        
+        let dateSt:Int = Int(dateStamp)
+        print(dateSt)
+        string = String(dateSt) as NSString
+        
+        //
+        
+        
+        let timeStamp : TimeInterval = string.doubleValue
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd hh:mm:ss"
+        
+        let newDate = Date(timeIntervalSince1970: timeStamp)
+        return dateFormatter.string(from: newDate)
+    }
  
 }
 
@@ -201,7 +210,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
+        let height:CGFloat = 0.0
+        return height
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -220,12 +230,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if dateButton.superview == nil {
             headerView.addSubview(dateButton)
         }
-        
-//        let dateLabel: UILabel = UILabel.init(frame: CGRect(x: 100, y: 15, width: 150, height: 20))
-//        dateLabel.font = UIFont.systemFont(ofSize: 14.0)
-//        dateLabel.text = "2017.08.30" //NSDate.date
-//        dateLabel.textAlignment = .center
-//        headerView.addSubview(dateLabel)
         
         let bottomView = UIView.init(frame: CGRect(x: 0, y: 49.5, width: ScreenWidth(), height: 0.5))
         bottomView.backgroundColor = UIColor.lightGray
@@ -258,6 +262,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
      
+        if indexPath.row < self.dataArray.count {
+            let orderDetail = self.dataArray[indexPath.row]
+            self.queryRechargeResult(orderId: orderDetail.order_id ?? "")
+        }
     }
     
 }

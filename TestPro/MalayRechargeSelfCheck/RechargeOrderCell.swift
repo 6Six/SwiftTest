@@ -47,6 +47,7 @@ class RechargeOrderCell: UITableViewCell {
         timeLabel.text = self.timeStampToString(timeStamp: orderDetail.recharge_time!)
         celNameLabel.text = orderDetail.telcom_name
         priceLabel.text = "$" + orderDetail.recharge_money!
+        orderIdLabel.text = orderDetail.order_id
         
         // green: 45FF80
         // red:   FF0000
@@ -55,10 +56,7 @@ class RechargeOrderCell: UITableViewCell {
         let resultStr: String!
         
         if orderDetail.recharge_status == "1"  {
-            // 已到账
-//            resultLabel.textColor = UIColor.hexColor("45FF80") // green
-//            resultLabel.text = "已到账"
-            
+            // 已到账            
             color = UIColor.hexColor("45FF80")
             resultStr = "已到账"
         }
@@ -76,6 +74,8 @@ class RechargeOrderCell: UITableViewCell {
         
         let timeStamp : TimeInterval = string.doubleValue
         let dateFormatter = DateFormatter()
+
+//        dateFormatter.timeZone = TimeZone.init(identifier: "Asia/Shanghai")
         dateFormatter.dateFormat = "yyyy.MM.dd hh:mm:ss"
         
         let newDate = Date(timeIntervalSince1970: timeStamp)

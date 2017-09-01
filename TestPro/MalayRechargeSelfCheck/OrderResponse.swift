@@ -10,12 +10,12 @@ import Foundation
 import ObjectMapper
 
 enum TelcomType: Int {
-    case celcom = 0
-    case digi = 1
-    case maxis = 2
-    case tron = 3
-    case tunetalk = 4
-    case umobile = 5
+    case celcom = 3
+    case digi = 2
+    case maxis = 1
+    case tron = 25
+    case tunetalk = 5
+    case umobile = 4
     case xox = 6
 }
 
