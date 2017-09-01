@@ -145,13 +145,15 @@ class ViewController: UIViewController {
                 JustHUD.shared.hide()
             }
             
-            self.dataArray = (orderResponse?.orderDetails)!
-            self.dataArray = self.dataArray.reversed()
-            self.tableView.reloadData()
+            if (orderResponse?.orderDetails) != nil {
+                self.dataArray = (orderResponse?.orderDetails)!
+                self.dataArray = self.dataArray.reversed()
+                self.tableView.reloadData()
+            }
         }
     }
     
-    func queryRechargeResult(orderId: String) {
+    func queryRechargeResult(orderId: String, atIndex index: Int) {
         JustHUD.shared.showInView(view: self.view, withHeader: nil, andFooter: "查询中，请稍候..")
 
         let queryUrl = "https://www.ygsjsy.com/dmsh/JSPay/checkTransactionStatus.php?sClientTxId=" + orderId
@@ -160,7 +162,13 @@ class ViewController: UIViewController {
                 JustHUD.shared.hide()
             }
             
-            
+            if index < self.dataArray.count {
+                let orderDetail = self.dataArray[index]
+                
+                let rechargeResultResponse = response.result.value
+                orderDetail.recharge_status = rechargeResultResponse?.rechargeStatus
+                self.tableView.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
+            }
         }
     }
     
@@ -264,7 +272,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
      
         if indexPath.row < self.dataArray.count {
             let orderDetail = self.dataArray[indexPath.row]
-            self.queryRechargeResult(orderId: orderDetail.order_id ?? "")
+            self.queryRechargeResult(orderId: orderDetail.order_id ?? "", atIndex: indexPath.row)
         }
     }
     

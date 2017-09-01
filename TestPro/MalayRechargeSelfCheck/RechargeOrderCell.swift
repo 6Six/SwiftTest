@@ -29,6 +29,7 @@ class RechargeOrderCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        resultLabel.adjustsFontSizeToFitWidth = true
         
 //        searchButton.layer.cornerRadius = 5.0
 //        searchButton.layer.borderWidth = 0.5
@@ -60,9 +61,13 @@ class RechargeOrderCell: UITableViewCell {
             color = UIColor.hexColor("45FF80")
             resultStr = "已到账"
         }
-        else {
+        else if orderDetail.recharge_status == "-1"{
             color = UIColor.hexColor("FF0000")
             resultStr = "未到账"
+        }
+        else {
+            color = UIColor.hexColor("ff0000")
+            resultStr = "未知错误"
         }
         
         resultLabel.textColor = color
