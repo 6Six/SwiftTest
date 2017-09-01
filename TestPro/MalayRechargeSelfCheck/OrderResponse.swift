@@ -12,7 +12,7 @@ import ObjectMapper
 enum TelcomType: Int {
     case celcom = 0
     case digi = 1
-    case hotlink = 2
+    case maxis = 2
     case tron = 3
     case tunetalk = 4
     case umobile = 5
@@ -101,8 +101,8 @@ class OrderDetail: Mappable {
         case .digi:
             telcomName = "digi"
             break
-        case .hotlink:
-            telcomName = "hotlink"
+        case .maxis:
+            telcomName = "maxis"
             break
         case .tron:
             telcomName = "tron"

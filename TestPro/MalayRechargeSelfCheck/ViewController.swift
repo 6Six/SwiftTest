@@ -37,6 +37,13 @@ class ViewController: UIViewController {
         
         self.title = "话费充值查询"
 
+        let refreshButton = UIButton()
+        refreshButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        refreshButton.setImage(UIImage(named: "refresh"), for: .normal)
+        refreshButton.addTarget(self, action: #selector(loadData), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: refreshButton)
+        
+        
 //        self.tableView.tableHeaderView = self.tableHeaderView()
         self.tableView.tableFooterView = UIView()
         
@@ -56,21 +63,21 @@ class ViewController: UIViewController {
     }
 
     
-    func tableHeaderView() -> UIView {
-        let headerView = UIView.init(frame: CGRect(x: 0, y: 0, width: ScreenWidth(), height: 50.0))
-        
-        let dateLabel: UILabel = UILabel.init(frame: CGRect(x: 100, y: 15, width: 150, height: 20))
-        dateLabel.font = UIFont.systemFont(ofSize: 14.0)
-        dateLabel.text = "2017.08.30" //NSDate.date
-        dateLabel.textAlignment = .center
-        headerView.addSubview(dateLabel)
-        
-        let bottomView = UIView.init(frame: CGRect(x: 0, y: 49.5, width: ScreenWidth(), height: 0.5))
-        bottomView.backgroundColor = UIColor.lightGray
-        headerView.addSubview(bottomView)
-        
-        return headerView
-    }
+//    func tableHeaderView() -> UIView {
+//        let headerView = UIView.init(frame: CGRect(x: 0, y: 0, width: ScreenWidth(), height: 50.0))
+//        
+//        let dateLabel: UILabel = UILabel.init(frame: CGRect(x: 100, y: 15, width: 150, height: 20))
+//        dateLabel.font = UIFont.systemFont(ofSize: 14.0)
+//        dateLabel.text = "2017.08.30" //NSDate.date
+//        dateLabel.textAlignment = .center
+//        headerView.addSubview(dateLabel)
+//        
+//        let bottomView = UIView.init(frame: CGRect(x: 0, y: 49.5, width: ScreenWidth(), height: 0.5))
+//        bottomView.backgroundColor = UIColor.lightGray
+//        headerView.addSubview(bottomView)
+//        
+//        return headerView
+//    }
     
     func ScreenWidth() -> CGFloat {
         return UIScreen.main.bounds.size.width
@@ -119,25 +126,27 @@ class ViewController: UIViewController {
     }
     
     func queryData() {
-//        Alamofire.request("www.baidu.com").responseJSON {
-//            response in
-//            if let value = response.result.value {
-//                print("Alamofire = \(value)")
-//            }
-//        }
+
+        JustHUD.shared.showInView(view: self.view, withHeader: nil, andFooter: "请求数据中...")
         
         let url = "https://www.ygsjsy.com/dmsh/rechargedb/queryAllOrder.php"
         
         Alamofire.request(url).responseObject { (response: DataResponse<OrderResponse>) in
             let orderResponse = response.result.value
-            print(orderResponse?.result_code ?? 0)
-            print(orderResponse?.response ?? "none")
+           
+//            print(orderResponse?.result_code ?? 0)
+//            print(orderResponse?.response ?? "none")
+//            
+//            if let orderDetail = orderResponse?.orderDetails {
+//                print(orderDetail)
+//            }
             
-            if let orderDetail = orderResponse?.orderDetails {
-                print(orderDetail)
+            if JustHUD.shared.isActive {
+                JustHUD.shared.hide()
             }
             
             self.dataArray = (orderResponse?.orderDetails)!
+            self.dataArray = self.dataArray.reversed()
             self.tableView.reloadData()
         }
     }
@@ -145,6 +154,30 @@ class ViewController: UIViewController {
     func queryOrder(date: NSDate) {
         
     }
+    
+//    func timeStampToString(timeStamp:String) -> String {
+//        var string = NSString(string: timeStamp)
+//        
+//        // test code
+//        
+//        let date = Date()
+//        let dateStamp:TimeInterval = date.timeIntervalSince1970
+//        
+//        let dateSt:Int = Int(dateStamp)
+//        print(dateSt)
+//        string = String(dateSt) as NSString
+//        
+//        //
+//        
+//        
+//        let timeStamp : TimeInterval = string.doubleValue
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy.MM.dd hh:mm:ss"
+//        
+//        let newDate = Date(timeIntervalSince1970: timeStamp)
+//        return dateFormatter.string(from: newDate)
+//    }
+ 
 }
 
 

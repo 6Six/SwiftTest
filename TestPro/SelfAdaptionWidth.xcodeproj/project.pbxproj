@@ -22,6 +22,9 @@
 		4BDB7E4B1F55C2B800893C8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BDB7E491F55C2B800893C8F /* LaunchScreen.storyboard */; };
 		4BDB7E4C1F55C2B800893C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BDB7E4A1F55C2B800893C8F /* Main.storyboard */; };
 		4BDB7E4E1F55C37300893C8F /* RechargeOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BDB7E4D1F55C37300893C8F /* RechargeOrderCell.xib */; };
+		4BEC14D91F58577800391814 /* JustHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC14D81F58577800391814 /* JustHUD.swift */; };
+		4BEC15151F58631F00391814 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC15141F58631F00391814 /* String+Extension.swift */; };
+		4BEC15171F58635F00391814 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC15161F58635F00391814 /* UIColor+Extension.swift */; };
 		C8542FA63D10AA522B117D76 /* Pods_MalayRechargeSelfCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332AB5B6D4273D2C20EF0519 /* Pods_MalayRechargeSelfCheck.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +49,9 @@
 		4BDB7E491F55C2B800893C8F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BDB7E4A1F55C2B800893C8F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4BDB7E4D1F55C37300893C8F /* RechargeOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeOrderCell.xib; sourceTree = "<group>"; };
+		4BEC14D81F58577800391814 /* JustHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JustHUD.swift; sourceTree = "<group>"; };
+		4BEC15141F58631F00391814 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		4BEC15161F58635F00391814 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		4DC29B3CDDFC77045E8B0353 /* Pods-MalayRechargeSelfCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MalayRechargeSelfCheck.release.xcconfig"; path = "Pods/Target Support Files/Pods-MalayRechargeSelfCheck/Pods-MalayRechargeSelfCheck.release.xcconfig"; sourceTree = "<group>"; };
 		A8E0618A848EB30217F15A1A /* Pods-MalayRechargeSelfCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MalayRechargeSelfCheck.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MalayRechargeSelfCheck/Pods-MalayRechargeSelfCheck.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +111,8 @@
 		4BDB7DFC1F55924600893C8F /* MalayRechargeSelfCheck */ = {
 			isa = PBXGroup;
 			children = (
+				4BEC15131F5862F700391814 /* Category */,
+				4BEC14D61F58577800391814 /* Lib */,
 				4BDB7E491F55C2B800893C8F /* LaunchScreen.storyboard */,
 				4BDB7E4A1F55C2B800893C8F /* Main.storyboard */,
 				4BDB7DFD1F55924600893C8F /* AppDelegate.swift */,
@@ -118,6 +126,31 @@
 				4BDB7E091F55924600893C8F /* Info.plist */,
 			);
 			path = MalayRechargeSelfCheck;
+			sourceTree = "<group>";
+		};
+		4BEC14D61F58577800391814 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				4BEC14D71F58577800391814 /* JustHUD */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		4BEC14D71F58577800391814 /* JustHUD */ = {
+			isa = PBXGroup;
+			children = (
+				4BEC14D81F58577800391814 /* JustHUD.swift */,
+			);
+			path = JustHUD;
+			sourceTree = "<group>";
+		};
+		4BEC15131F5862F700391814 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				4BEC15141F58631F00391814 /* String+Extension.swift */,
+				4BEC15161F58635F00391814 /* UIColor+Extension.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		8EB39CD2B56E9BF39F2FA84C /* Frameworks */ = {
@@ -336,10 +369,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BDB7E001F55924600893C8F /* ViewController.swift in Sources */,
+				4BEC15151F58631F00391814 /* String+Extension.swift in Sources */,
+				4BEC14D91F58577800391814 /* JustHUD.swift in Sources */,
 				4B93494E1F5699FE0054BA65 /* TestCell.swift in Sources */,
 				4B9349611F58131F0054BA65 /* OrderResponse.swift in Sources */,
 				4BDB7E0E1F55946E00893C8F /* RechargeOrderCell.swift in Sources */,
 				4BDB7DFE1F55924600893C8F /* AppDelegate.swift in Sources */,
+				4BEC15171F58635F00391814 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

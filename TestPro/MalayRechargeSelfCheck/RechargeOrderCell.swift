@@ -19,8 +19,9 @@ class RechargeOrderCell: UITableViewCell {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var celNameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var orderIdLabel: UILabel!
     
-    @IBOutlet weak var searchButton: UIButton!
+//    @IBOutlet weak var searchButton: UIButton!
     
     
     
@@ -29,9 +30,9 @@ class RechargeOrderCell: UITableViewCell {
         super.awakeFromNib()
         
         
-        searchButton.layer.cornerRadius = 5.0
-        searchButton.layer.borderWidth = 0.5
-        searchButton.layer.borderColor = UIColor.lightGray.cgColor //UIColor.hexColor("bdbdbd").cgColor
+//        searchButton.layer.cornerRadius = 5.0
+//        searchButton.layer.borderWidth = 0.5
+//        searchButton.layer.borderColor = UIColor.lightGray.cgColor //UIColor.hexColor("bdbdbd").cgColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -43,9 +44,42 @@ class RechargeOrderCell: UITableViewCell {
     public func setContent(orderDetail: OrderDetail) {
         telImageView.image = UIImage.init(named: orderDetail.telcom_image_name!)
         phoneLable.text = orderDetail.phone_num
-        timeLabel.text = orderDetail.recharge_time
+        timeLabel.text = self.timeStampToString(timeStamp: orderDetail.recharge_time!)
         celNameLabel.text = orderDetail.telcom_name
         priceLabel.text = "$" + orderDetail.recharge_money!
+        
+        // green: 45FF80
+        // red:   FF0000
+        
+        let color: UIColor!
+        let resultStr: String!
+        
+        if orderDetail.recharge_status == "1"  {
+            // 已到账
+//            resultLabel.textColor = UIColor.hexColor("45FF80") // green
+//            resultLabel.text = "已到账"
+            
+            color = UIColor.hexColor("45FF80")
+            resultStr = "已到账"
+        }
+        else {
+            color = UIColor.hexColor("FF0000")
+            resultStr = "未到账"
+        }
+        
+        resultLabel.textColor = color
+        resultLabel.text = resultStr
+    }
+    
+    func timeStampToString(timeStamp:String) -> String {
+        let string = NSString(string: timeStamp)
+        
+        let timeStamp : TimeInterval = string.doubleValue
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd hh:mm:ss"
+        
+        let newDate = Date(timeIntervalSince1970: timeStamp)
+        return dateFormatter.string(from: newDate)
     }
     
 }
