@@ -272,6 +272,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
      
         if indexPath.row < self.dataArray.count {
             let orderDetail = self.dataArray[indexPath.row]
+            
             self.queryRechargeResult(orderId: orderDetail.order_id ?? "", atIndex: indexPath.row)
         }
     }
