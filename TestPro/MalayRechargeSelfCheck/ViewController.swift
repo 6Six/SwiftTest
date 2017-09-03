@@ -51,6 +51,8 @@ class ViewController: UIViewController {
         self.tableView.register(UINib.init(nibName: "RechargeOrderCell", bundle: nil), forCellReuseIdentifier: "RechargeOrderCell")
         
         self.loadData()
+        
+        self.checkUpdate()
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,6 +64,38 @@ class ViewController: UIViewController {
         self.queryData()
     }
 
+    // 检查是否有版本更新
+    func checkUpdate() {
+        let url = "https://www.ygsjsy.com/dmsh/rechargedb/checkVersionUpdate.php"
+        
+        Alamofire.request(url).responseObject { (response: DataResponse<CheckVersionUpdateResponse>) in
+            let checkUpdateResponse = response.result.value
+            let newVersion: String = (checkUpdateResponse?.version!)!
+            
+            let currentVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+            let hasUpdate = Util.shared.greadVersion(newVersion: newVersion, oldVersion: currentVersion)
+
+            if hasUpdate == true {
+                let alertController: UIAlertController = UIAlertController(title:"更新提示", message: "\n已经有新版本上线，点击确定去更新", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alertController.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.default){
+                    (alertAction)->Void in
+                    let openUrlStr = "https://www.pgyer.com/8Yhb"
+                    UIApplication.shared.open(URL.init(string: openUrlStr)!, options: [:], completionHandler: { (success) in
+                        
+                    })
+                    
+//                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.pgyer.com/ilpq"]]
+                })
+                alertController.addAction(UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel,handler:nil))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+            else {
+                print("no update")
+            }
+        }
+    }
     
 //    func tableHeaderView() -> UIView {
 //        let headerView = UIView.init(frame: CGRect(x: 0, y: 0, width: ScreenWidth(), height: 50.0))
