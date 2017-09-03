@@ -163,7 +163,7 @@ class ViewController: UIViewController {
 
         JustHUD.shared.showInView(view: self.view, withHeader: nil, andFooter: "请求数据中...")
         
-        let url = "https://www.ygsjsy.com/dmsh/rechargedb/queryAllOrder.php"
+        let url = "https://www.ygsjsy.com/dmsh/JSPay/queryAllOrder.php"
         
         Alamofire.request(url).responseObject { (response: DataResponse<OrderResponse>) in
             let orderResponse = response.result.value
