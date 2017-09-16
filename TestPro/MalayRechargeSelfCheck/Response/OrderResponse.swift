@@ -67,7 +67,7 @@ class OrderDetail: Mappable {
     var order_id: String?
     var phone_num: String?
     var recharge_money: String?
-    var recharge_status: String?
+    var recharge_status: String?    // 1:已到账   -1：未到账    其他是未知错误
     var recharge_time: String?
     var telcom_name_id: String?
     var telcom_name: String?

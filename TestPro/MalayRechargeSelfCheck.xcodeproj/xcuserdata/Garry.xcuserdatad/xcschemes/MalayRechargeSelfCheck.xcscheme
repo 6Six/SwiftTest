@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4BD30D7F1F50093500669237"
-               BuildableName = "SelfAdaptionWidth.app"
-               BlueprintName = "SelfAdaptionWidth"
-               ReferencedContainer = "container:SelfAdaptionWidth.xcodeproj">
+               BlueprintIdentifier = "4BDB7DFA1F55924600893C8F"
+               BuildableName = "MalayRechargeSelfCheck.app"
+               BlueprintName = "MalayRechargeSelfCheck"
+               ReferencedContainer = "container:MalayRechargeSelfCheck.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4BD30D7F1F50093500669237"
-            BuildableName = "SelfAdaptionWidth.app"
-            BlueprintName = "SelfAdaptionWidth"
-            ReferencedContainer = "container:SelfAdaptionWidth.xcodeproj">
+            BlueprintIdentifier = "4BDB7DFA1F55924600893C8F"
+            BuildableName = "MalayRechargeSelfCheck.app"
+            BlueprintName = "MalayRechargeSelfCheck"
+            ReferencedContainer = "container:MalayRechargeSelfCheck.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4BD30D7F1F50093500669237"
-            BuildableName = "SelfAdaptionWidth.app"
-            BlueprintName = "SelfAdaptionWidth"
-            ReferencedContainer = "container:SelfAdaptionWidth.xcodeproj">
+            BlueprintIdentifier = "4BDB7DFA1F55924600893C8F"
+            BuildableName = "MalayRechargeSelfCheck.app"
+            BlueprintName = "MalayRechargeSelfCheck"
+            ReferencedContainer = "container:MalayRechargeSelfCheck.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4BD30D7F1F50093500669237"
-            BuildableName = "SelfAdaptionWidth.app"
-            BlueprintName = "SelfAdaptionWidth"
-            ReferencedContainer = "container:SelfAdaptionWidth.xcodeproj">
+            BlueprintIdentifier = "4BDB7DFA1F55924600893C8F"
+            BuildableName = "MalayRechargeSelfCheck.app"
+            BlueprintName = "MalayRechargeSelfCheck"
+            ReferencedContainer = "container:MalayRechargeSelfCheck.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -17,10 +17,13 @@ import AlamofireObjectMapper
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var versionLabel: UILabel!
     
     var dateButton: UIButton!
     
     var dataArray = Array<OrderDetail>()
+    var displayDataArray = Array<OrderDetail>()
     
 //    var dataArray = [
 //    ["telImage": "celcom_icon", "phone": "18473827238", "time": "2017-08-29 12:32:01", "celName": "celcom", "price": "50.0"],
@@ -53,6 +56,7 @@ class ViewController: UIViewController {
         self.loadData()
         
         self.checkUpdate()
+        self.addHeaderView();
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,7 +70,7 @@ class ViewController: UIViewController {
 
     // 检查是否有版本更新
     func checkUpdate() {
-        let url = "https://www.ygsjsy.com/dmsh/rechargedb/checkVersionUpdate.php"
+        let url = "https://www.ygsjsy.com/dmsh/JSPay/checkVersionUpdate.php"
         
         Alamofire.request(url).responseObject { (response: DataResponse<CheckVersionUpdateResponse>) in
             let checkUpdateResponse = response.result.value
@@ -75,6 +79,8 @@ class ViewController: UIViewController {
             let currentVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
             let hasUpdate = Util.shared.greadVersion(newVersion: newVersion, oldVersion: currentVersion)
 
+            self.versionLabel.text = "V" + currentVersion;
+            
             if hasUpdate == true {
                 let alertController: UIAlertController = UIAlertController(title:"更新提示", message: "\n已经有新版本上线，点击确定去更新", preferredStyle: UIAlertControllerStyle.alert)
                 
@@ -85,7 +91,6 @@ class ViewController: UIViewController {
                         
                     })
                     
-//                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.pgyer.com/ilpq"]]
                 })
                 alertController.addAction(UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel,handler:nil))
                 
@@ -97,21 +102,61 @@ class ViewController: UIViewController {
         }
     }
     
-//    func tableHeaderView() -> UIView {
-//        let headerView = UIView.init(frame: CGRect(x: 0, y: 0, width: ScreenWidth(), height: 50.0))
-//        
+    func addHeaderView() -> Void {
+//        let headerView = UIView.init(frame: CGRect(x: 0, y: 64, width: ScreenWidth(), height: 50.0))
+//        headerView.backgroundColor = UIColor.white
 //        let dateLabel: UILabel = UILabel.init(frame: CGRect(x: 100, y: 15, width: 150, height: 20))
 //        dateLabel.font = UIFont.systemFont(ofSize: 14.0)
 //        dateLabel.text = "2017.08.30" //NSDate.date
 //        dateLabel.textAlignment = .center
 //        headerView.addSubview(dateLabel)
-//        
+        
+        self.segmentControl.selectedSegmentIndex = 0
+        self.segmentControl.addTarget(self, action: #selector(segmentValueChanged(segmented:)), for: .valueChanged)
+        
 //        let bottomView = UIView.init(frame: CGRect(x: 0, y: 49.5, width: ScreenWidth(), height: 0.5))
 //        bottomView.backgroundColor = UIColor.lightGray
-//        headerView.addSubview(bottomView)
-//        
-//        return headerView
-//    }
+//        self.view.addSubview(bottomView)
+        
+//        self.view.addSubview(headerView);
+    }
+    
+    func segmentValueChanged(segmented: UISegmentedControl) -> Void {
+        switch segmented.selectedSegmentIndex {
+        case 0:
+            self.displayDataArray = self.dataArray
+            break
+        case 1:
+            self.displayDataArray.removeAll()
+            
+            for index in 0 ..< self.dataArray.count {
+                let orderDetail = self.dataArray[index] 
+                
+                if orderDetail.recharge_status == "1" {
+                    self.displayDataArray.append(orderDetail)
+                }
+            }
+            
+            break
+        case 2:
+            self.displayDataArray.removeAll()
+            
+            for index in 0 ..< self.dataArray.count {
+                let orderDetail = self.dataArray[index]
+                
+                if orderDetail.recharge_status == "-1" {
+                    self.displayDataArray.append(orderDetail)
+                }
+            }
+            break
+        default:
+            break
+        }
+        
+        if !self.displayDataArray.isEmpty {
+            self.tableView.reloadData()
+        }
+    }
     
     func ScreenWidth() -> CGFloat {
         return UIScreen.main.bounds.size.width
@@ -163,7 +208,7 @@ class ViewController: UIViewController {
 
         JustHUD.shared.showInView(view: self.view, withHeader: nil, andFooter: "请求数据中...")
         
-        let url = "https://www.ygsjsy.com/dmsh/JSPay/queryAllOrder.php"
+        let url = "https://www.ygsjsy.com/dmsh/rechargedb/queryAllOrder.php"
         
         Alamofire.request(url).responseObject { (response: DataResponse<OrderResponse>) in
             let orderResponse = response.result.value
@@ -182,6 +227,10 @@ class ViewController: UIViewController {
             if (orderResponse?.orderDetails) != nil {
                 self.dataArray = (orderResponse?.orderDetails)!
                 self.dataArray = self.dataArray.reversed()
+//                self.displayDataArray = self.dataArray
+                
+                self.segmentValueChanged(segmented: self.segmentControl)
+                
                 self.tableView.reloadData()
             }
         }
@@ -196,8 +245,8 @@ class ViewController: UIViewController {
                 JustHUD.shared.hide()
             }
             
-            if index < self.dataArray.count {
-                let orderDetail = self.dataArray[index]
+            if index < self.displayDataArray.count {
+                let orderDetail = self.displayDataArray[index]
                 
                 let rechargeResultResponse = response.result.value
                 orderDetail.recharge_status = rechargeResultResponse?.rechargeStatus
@@ -206,28 +255,50 @@ class ViewController: UIViewController {
         }
     }
     
-    func timeStampToString(timeStamp:String) -> String {
-        var string = NSString(string: timeStamp)
+    func queryAllUnarrivedOrdersStatus() -> Void {
+        JustHUD.shared.showInView(view: self.view, withHeader: nil, andFooter: "查询中，请稍候..")
         
-        // test code
+        let queryUrl = "https://www.ygsjsy.com/dmsh/JSPay/checkAllUnarrivedOrdersStatus.php"
         
-        let date = Date()
-        let dateStamp:TimeInterval = date.timeIntervalSince1970
-        
-        let dateSt:Int = Int(dateStamp)
-        print(dateSt)
-        string = String(dateSt) as NSString
-        
-        //
-        
-        
-        let timeStamp : TimeInterval = string.doubleValue
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd hh:mm:ss"
-        
-        let newDate = Date(timeIntervalSince1970: timeStamp)
-        return dateFormatter.string(from: newDate)
+        Alamofire.request(queryUrl).responseObject { (response: DataResponse<CheckAllUnarrivedOrderResponse>) in
+            if JustHUD.shared.isActive {
+                JustHUD.shared.hide()
+            }
+            
+//            if index < self.displayDataArray.count {
+//                let orderDetail = self.displayDataArray[index]
+//                
+//                let rechargeResultResponse = response.result.value
+//                orderDetail.recharge_status = rechargeResultResponse?.rechargeStatus
+//                self.tableView.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
+//            }
+            
+            self.queryData()
+        }
     }
+    
+//    func timeStampToString(timeStamp:String) -> String {
+//        var string = NSString(string: timeStamp)
+//        
+//        // test code
+//        
+//        let date = Date()
+//        let dateStamp:TimeInterval = date.timeIntervalSince1970
+//        
+//        let dateSt:Int = Int(dateStamp)
+//        print(dateSt)
+//        string = String(dateSt) as NSString
+//        
+//        //
+//        
+//        
+//        let timeStamp : TimeInterval = string.doubleValue
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy.MM.dd hh:mm:ss"
+//        
+//        let newDate = Date(timeIntervalSince1970: timeStamp)
+//        return dateFormatter.string(from: newDate)
+//    }
  
 }
 
@@ -240,7 +311,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let rows = self.dataArray.count
+        let rows = self.displayDataArray.count
         
         return rows
     }
@@ -285,11 +356,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "RechargeOrderCell") as! RechargeOrderCell
 
-        //        cell.textLabel?.text = self.dataArray[indexPath.row]
-        //        cell.telImageView?.image = UIImage.init(named: self.dataArray[indexPath.row])
-        
-        if indexPath.row < self.dataArray.count {
-            cell.setContent(orderDetail: self.dataArray[indexPath.row])
+        if indexPath.row < self.displayDataArray.count {
+            cell.setContent(orderDetail: self.displayDataArray[indexPath.row])
         }
         
         return cell
@@ -304,10 +372,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
      
-        if indexPath.row < self.dataArray.count {
-            let orderDetail = self.dataArray[indexPath.row]
+        if indexPath.row < self.displayDataArray.count {
+            let orderDetail = self.displayDataArray[indexPath.row]
             
-            self.queryRechargeResult(orderId: orderDetail.order_id ?? "", atIndex: indexPath.row)
+            if self.segmentControl.selectedSegmentIndex == 2 {
+                self.queryAllUnarrivedOrdersStatus()
+            }
+            else {
+                self.queryRechargeResult(orderId: orderDetail.order_id ?? "", atIndex: indexPath.row)
+            }
         }
     }
     
