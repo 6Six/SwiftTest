@@ -9,8 +9,12 @@
 #ifndef _IOSURFACE_H
 #define _IOSURFACE_H 1
 
-#include <IOSurface/IOSurfaceBase.h>
-#include <IOSurface/IOSurfaceAPI.h>
-#include <IOSurface/IOSurfaceAccelerator.h>
+#include "IOSurfaceBase.h"
+#include "IOSurfaceAPI.h"
+#include "IOSurfaceAccelerator.h"
+
+//#include <IOSurface/IOSurfaceBase.h>
+//#include <IOSurface/IOSurfaceAPI.h>
+//#include <IOSurface/IOSurfaceAccelerator.h>
 
 #endif

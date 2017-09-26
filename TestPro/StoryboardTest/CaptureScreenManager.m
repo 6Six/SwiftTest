@@ -8,10 +8,11 @@
 
 #import "CaptureScreenManager.h"
 #import <UIKit/UIKit.h>
-#import <IOMobileFrameBuffer.h>
+#import "IOMobileFrameBuffer.h"
 //#import "IOMobileFrameBuffer.h"
-#import <IOKit/IOKitLib.h>
-#import <IOSurface/IOSurface.h>
+#import "IOKit/IOKitLib.h"
+#import "IOSurface.h"
+//#import <IOSurface/IOSurface.h>
 #import <QuartzCore/QuartzCore.h>
 
 @interface CaptureScreenManager()

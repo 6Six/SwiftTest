@@ -9,9 +9,9 @@
  *
  */
 
-#include <IOKit/IOTypes.h>
-#include <IOKit/IOKitLib.h>
-#include <CoreSurface/CoreSurface.h>
+#include "IOKit/IOTypes.h"
+#include "IOKit/IOKitLib.h"
+#include "CoreSurface/CoreSurface.h"
 
 #include <stdio.h> // For mprotect
 #include <sys/mman.h>

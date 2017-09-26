@@ -9,8 +9,11 @@
 #ifndef _IOSURFACE_API_H
 #define _IOSURFACE_API_H 1
 
-#include <IOKit/IOKitLib.h>
-#include <IOSurface/IOSurfaceBase.h>
+//#include <IOKit/IOKitLib.h>
+//#include <IOSurface/IOSurfaceBase.h>
+
+#include "IOKitLib.h"
+#include "IOSurfaceBase.h"
 
 __BEGIN_DECLS
 

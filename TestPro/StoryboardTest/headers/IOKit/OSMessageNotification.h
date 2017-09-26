@@ -41,7 +41,9 @@ extern "C" {
 
 #include <mach/mach_types.h>
 #include <device/device_types.h>
-#include <IOKit/IOReturn.h>
+    
+#include "IOReturn.h"
+//#include <IOKit/IOReturn.h>
 
 enum {
     kFirstIOKitNotificationType 		= 100,
