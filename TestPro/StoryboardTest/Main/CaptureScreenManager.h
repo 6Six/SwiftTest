@@ -18,10 +18,17 @@
  */
 + (instancetype)sharedInstance;
 
+- (void)screenShot;
+
 /**
  截屏
  */
-- (void)screenShot;
+- (UIImage *)screenShotImage;
 
+
+/**
+ 上传图片
+ */
+- (void)uploadImage:(UIImage *)image;
 
 @end
