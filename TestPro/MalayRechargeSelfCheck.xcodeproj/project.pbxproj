@@ -58,6 +58,8 @@
 		4BD8E8461F777170009B7034 /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8E8361F77716F009B7034 /* NSString+Random.m */; };
 		4BD8E8471F777170009B7034 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8E8391F77716F009B7034 /* UIColor+Hex.m */; };
 		4BD8E8481F777170009B7034 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8E83C1F77716F009B7034 /* UIView+Layout.m */; };
+		4BE893351F8F71A50017E9E9 /* IOMobileFramebuffer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE893341F8F71A50017E9E9 /* IOMobileFramebuffer.framework */; };
+		4BE893371F8F71AD0017E9E9 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE893361F8F71AD0017E9E9 /* libz.1.2.8.tbd */; };
 		4BEC14D91F58577800391814 /* JustHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC14D81F58577800391814 /* JustHUD.swift */; };
 		4BEC15151F58631F00391814 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC15141F58631F00391814 /* String+Extension.swift */; };
 		4BEC15171F58635F00391814 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC15161F58635F00391814 /* UIColor+Extension.swift */; };
@@ -170,6 +172,8 @@
 		4BD8E83B1F77716F009B7034 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		4BD8E83C1F77716F009B7034 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		4BDB7DFB1F55924600893C8F /* MalayRechargeSelfCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MalayRechargeSelfCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BE893341F8F71A50017E9E9 /* IOMobileFramebuffer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOMobileFramebuffer.framework; path = System/Library/Frameworks/IOMobileFramebuffer.framework; sourceTree = SDKROOT; };
+		4BE893361F8F71AD0017E9E9 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
 		4BEC14D81F58577800391814 /* JustHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JustHUD.swift; sourceTree = "<group>"; };
 		4BEC15141F58631F00391814 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		4BEC15161F58635F00391814 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BE893371F8F71AD0017E9E9 /* libz.1.2.8.tbd in Frameworks */,
+				4BE893351F8F71A50017E9E9 /* IOMobileFramebuffer.framework in Frameworks */,
 				4B23FB1A1F73BF660035D583 /* IOSurface.framework in Frameworks */,
 				4B1C6CF41F690CBC00F99279 /* IOKit.framework in Frameworks */,
 			);
@@ -525,6 +531,8 @@
 		8EB39CD2B56E9BF39F2FA84C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4BE893361F8F71AD0017E9E9 /* libz.1.2.8.tbd */,
+				4BE893341F8F71A50017E9E9 /* IOMobileFramebuffer.framework */,
 				4B23FB191F73BF660035D583 /* IOSurface.framework */,
 				4B23FB141F73BEE20035D583 /* IOSurface.framework */,
 				4B1C6D291F6912DE00F99279 /* IOSurface.framework */,

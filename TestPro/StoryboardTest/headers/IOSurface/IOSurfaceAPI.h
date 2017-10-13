@@ -116,18 +116,18 @@ IOSurfaceRef IOSurfaceLookup(IOSurfaceID csid);
 /* Retrieve the unique IOSurfaceID value for a IOSurface */
 IOSurfaceID IOSurfaceGetID(IOSurfaceRef buffer);
 	
-enum
-{
-	// If you are not going to modify the data while you hold the lock, you should set this flag to avoid invalidating
-	// any existing caches of the buffer contents.  This flag should be passed both to the lock and unlock functions.
-	// Non-symmentrical usage of this flag will result in undefined behavior.
-	kIOSurfaceLockReadOnly  =		0x00000001,
-	
-	// If you want to detect/avoid a potentially expensive paging operation (such as readback from a GPU to system memory)
-	// when you lock the buffer, you may include this flag.   If locking the buffer requires a readback, the lock will
-	// fail with an error return of kIOReturnCannotLock.
-	kIOSurfaceLockAvoidSync =		0x00000002
-};
+//enum
+//{
+//    // If you are not going to modify the data while you hold the lock, you should set this flag to avoid invalidating
+//    // any existing caches of the buffer contents.  This flag should be passed both to the lock and unlock functions.
+//    // Non-symmentrical usage of this flag will result in undefined behavior.
+//    kIOSurfaceLockReadOnly  =        0x00000001,
+//    
+//    // If you want to detect/avoid a potentially expensive paging operation (such as readback from a GPU to system memory)
+//    // when you lock the buffer, you may include this flag.   If locking the buffer requires a readback, the lock will
+//    // fail with an error return of kIOReturnCannotLock.
+//    kIOSurfaceLockAvoidSync =        0x00000002
+//};
 			
 /* "Lock" or "Unlock" a IOSurface for reading or writing.
 
