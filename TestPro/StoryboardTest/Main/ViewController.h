@@ -1,9 +1,9 @@
 //
 //  ViewController.h
-//  StoryboardTest
+//  Calculator
 //
-//  Created by GarryZhang on 2017/9/4.
-//  Copyright © 2017年 GarryZhang. All rights reserved.
+//  Created by dingxin on 2017/8/2.
+//  Copyright © 2017年 dingxin. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

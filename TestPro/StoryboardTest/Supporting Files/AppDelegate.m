@@ -27,8 +27,29 @@
 @implementation AppDelegate
 
 
+- (void)connectServer {
+    NSError *error = nil;
+    //    NSString *host = @"39.108.83.41";
+    //    int16_t port = 1234;
+    
+    if (![[SSSocketManager sharedInstance] isConnected]) {
+        [[SSSocketManager sharedInstance] connectToHost:kHost onPort:kPort error:&error];
+        NSLog(@"connect to host: %@", kHost);
+    }
+    else {
+        [[SSSocketManager sharedInstance] disconnect];
+        NSLog(@"disconnect");
+    }
+
+}
+
+
+#pragma mark - AppDelegate methods
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [self connectServer];
+    
     return YES;
 }
 
